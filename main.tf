@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "my_bastion" {
-  source               = "../modules/vpc"
+  source               = "./modules/vpc"
   vpc_cidr             = "10.0.0.0/16"
   vpc_name             = "bastion"
   tenancy              = "default"
@@ -27,7 +27,7 @@ resource "aws_lb" "bastion_nlb" {
 }
 
 module "my_ec2" {
-  source             = "../modules/ec2"
+  source             = "./modules/ec2"
   instance_type      = "t2.micro"
   key                = "ninh"
   ami_id             = "ami-083ac7c7ecf9bb9b0"
@@ -39,7 +39,7 @@ module "my_ec2" {
 
 
 module "non_prod" {
-  source             = "../modules/eks"
+  source             = "./modules/eks"
   cluster_name       = "nnnn_non_prod"
   vpc_cidr           = "10.1.0.0/16"
   vpc_name           = "non_prod"
@@ -62,7 +62,7 @@ resource "aws_vpc_peering_connection" "bastion_to_Non_prod" {
 
 
 module "prod" {
-  source             = "../modules/eks"
+  source             = "./modules/eks"
   cluster_name       = "nnnn_prod"
   vpc_cidr           = "10.2.0.0/16"
   vpc_name           = "prod"
