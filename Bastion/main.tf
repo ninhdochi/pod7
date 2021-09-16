@@ -1,3 +1,4 @@
+/*
 provider "aws" {
   region  = "us-east-1"
   profile = "default"
@@ -37,3 +38,4 @@ module "my_ec2" {
   auto_scaling_zones = module.my_vpc.subnet_public_id
 
 }
+*/
